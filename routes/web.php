@@ -21,3 +21,9 @@ Route::get('/', function () {
 Route::get('about',function(){
     return 'about page';
 });
+
+
+
+Route::get('servicse',function(){
+    return 'Servisec page';
+});

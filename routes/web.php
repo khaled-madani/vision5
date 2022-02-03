@@ -24,6 +24,12 @@ Route::get('about',function(){
 
 
 
-Route::get('servicse',function(){
-    return 'Servisec page';
+
+
+Route::get('contact',function(){
+    return 'contact page';
+});
+
+Route::get('contact2',function(){
+    return 'contact page';
 });

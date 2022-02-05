@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\siteOneController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
 
@@ -81,7 +82,12 @@ Route::prefix('test')->group(function(){
     Route::get('index6/{name?}' , [testController::class,'index6'])->name('index6');
 });
 
-
+Route::prefix('/siteOne')->group(function(){
+    Route::get('/',[siteOneController::class,'index'])->name('indexSiteOne');
+    Route::get('/abou t',[siteOneController::class,'about'])->name('aboutSiteOne');
+    Route::get('/services',[siteOneController::class,'services'])->name('servicesSiteOne');
+    Route::get('/contact',[siteOneController::class,'contact'])->name('contactSiteOne');
+});
 
 
 

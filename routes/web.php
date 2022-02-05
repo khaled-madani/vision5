@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\testController;
 
 Route::get('/',function(){
     return 'Homepage';
@@ -45,26 +46,40 @@ Route::get('profile/{name?}',function($name3 = null){
 //     return "Welcome admain";
 // });
 
-Route::prefix('admin')->group(function(){
-Route::get('/',function(){
-    return "Welcome admin";
+// Route::prefix('admin')->group(function(){
+// Route::get('/',function(){
+//     return "Welcome admin";
+// });
+// Route::get('/posts',function(){
+//     return 'admin Posts';
+// });
+// Route::get('/articles',function(){
+//     return 'admin articles';
+// });
+// Route::get('/users  ',function(){
+//     return 'admin users';
+// })->name('admin_user');
+// });
+
+
+
+Route::prefix('admin15')->group(function(){
+    Route::get('/',function(){
+        return "admin 15";
+    });
 });
-Route::get('/posts',function(){
-    return 'admin Posts';
+
+
+Route::prefix('test')->group(function(){
+    Route::get('/',[testController::class , 'index'])->name('testPage');
+    //Route::get('/text2', 'textController@index');    هذا الشكل قبل الاصدار 8
+
+    Route::get('index2' , [testController::class,'index2'])->name('index2');
+    Route::get('index3' , [testController::class,'index3'])->name('index3');
+    Route::get('index4' , [testController::class,'index4'])->name('index4');
+    Route::get('index5' , [testController::class,'index5'])->name('index5');
+    Route::get('index6/{name?}' , [testController::class,'index6'])->name('index6');
 });
-Route::get('/articles',function(){
-    return 'admin articles';
-});
-Route::get('/users  ',function(){
-    return 'admin users';
-})->name('admin_user');
-});
-
-
-
-
-
-
 
 
 

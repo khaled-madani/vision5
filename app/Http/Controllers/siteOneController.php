@@ -8,25 +8,25 @@ class siteOneController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('site1.index');
     }
 
 
     public function about()
     {
-        return view('about');
+        return view('site1.about');
     }
 
 
     public function services()
     {
-        return view('services');
+        return view('site1.services');
     }
 
 
     public function contact()
     {
-        return view('contact');
+        return view('site1.contact');
     }
 
 }

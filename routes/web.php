@@ -64,29 +64,29 @@ Route::get('profile/{name?}',function($name3 = null){
 
 
 
-Route::prefix('admin15')->group(function(){
-    Route::get('/',function(){
-        return "admin 15";
-    });
-});
+// Route::prefix('admin15')->group(function(){
+//     Route::get('/',function(){
+//         return "admin 15";
+//     });
+// });
 
 
-Route::prefix('test')->group(function(){
-    Route::get('/',[testController::class , 'index'])->name('testPage');
-    //Route::get('/text2', 'textController@index');    هذا الشكل قبل الاصدار 8
+// Route::prefix('test')->group(function(){
+//     Route::get('/',[testController::class , 'index'])->name('testPage');
+//     //Route::get('/text2', 'textController@index');    هذا الشكل قبل الاصدار 8
 
-    Route::get('index2' , [testController::class,'index2'])->name('index2');
-    Route::get('index3' , [testController::class,'index3'])->name('index3');
-    Route::get('index4' , [testController::class,'index4'])->name('index4');
-    Route::get('index5' , [testController::class,'index5'])->name('index5');
-    Route::get('index6/{name?}' , [testController::class,'index6'])->name('index6');
-});
+//     Route::get('index2' , [testController::class,'index2'])->name('index2');
+//     Route::get('index3' , [testController::class,'index3'])->name('index3');
+//     Route::get('index4' , [testController::class,'index4'])->name('index4');
+//     Route::get('index5' , [testController::class,'index5'])->name('index5');
+//     Route::get('index6/{name?}' , [testController::class,'index6'])->name('index6');
+// });
 
-Route::prefix('/siteOne')->group(function(){
-    Route::get('/',[siteOneController::class,'index'])->name('indexSiteOne');
-    Route::get('/abou t',[siteOneController::class,'about'])->name('aboutSiteOne');
-    Route::get('/services',[siteOneController::class,'services'])->name('servicesSiteOne');
-    Route::get('/contact',[siteOneController::class,'contact'])->name('contactSiteOne');
+Route::prefix('/site1')->group(function(){
+    Route::get('/',[siteOneController::class,'index'])->name('indexSite1');
+    Route::get('/about',[siteOneController::class,'about'])->name('aboutSite1');
+    Route::get('/services',[siteOneController::class,'services'])->name('servicesSite1');
+    Route::get('/contact',[siteOneController::class,'contact'])->name('contactSite1');
 });
 
 

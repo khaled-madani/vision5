@@ -179,16 +179,8 @@
                 <div class="row align-items-center">
 
                     <div class="col-md-6">
-                        <h2>About Us</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis molestias maxime nostrum
-                            porro voluptatem delectus, ea itaque nobis a veritatis nesciunt est sapiente tempore ad
-                            possimus consequatur consectetur voluptas autem aliquid enim repellendus quisquam, iusto
-                            accusamus. Blanditiis dolor nesciunt deleniti laborum ea doloribus deserunt, earum sequi,
-                            reprehenderit quibusdam veniam quisquam facilis suscipit vel magnam, eligendi sint quae
-                            vitae soluta tempora iusto! Suscipit cupiditate ipsa explicabo molestias iusto non
-                            laudantium quam ex dolorum similique unde provident ratione doloremque expedita sunt
-                            corrupti commodi omnis fugit pariatur voluptatibus, laboriosam, facere aut modi quis. Earum,
-                            placeat necessitatibus beatae eius eligendi enim. Tempore, quidem eligendi!</p>
+                        <h2>{{ $title }}</h2>
+                        <p>{{ $body }}</p>
                     </div>
                     <div class="col-md-6"><img src="http://placekitten.com/500/500" alt=""></div>
                 </div>

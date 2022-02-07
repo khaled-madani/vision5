@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\siteOneController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
@@ -90,6 +91,11 @@ Route::prefix('/site1')->group(function(){
 });
 
 
-
+Route::prefix('/site2')->group(function(){
+    Route::get('/',[Site2Controller::class,'index'])->name('indexSite2');
+    Route::get('/about',[Site2Controller::class,'about'])->name('aboutSite2');
+    Route::get('/post',[Site2Controller::class,'post'])->name('postSite2');
+    Route::get('/contact',[Site2Controller::class,'contact'])->name('contactSite2');
+});
 
 

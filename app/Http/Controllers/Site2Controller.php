@@ -18,9 +18,10 @@ class Site2Controller extends Controller
         return view('site2.about');
     }
 
-    public function post()
+    public function post($text2)
     {
-        return view('site2.post');
+        // return $text;
+        return view('site2.post')->with('text2',$text2);
     }
 
     public function contact()

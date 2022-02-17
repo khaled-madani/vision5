@@ -115,5 +115,9 @@ Route::prefix('/form')->group(function (){
 
     Route::get('/form4',[formesController::class,'form4']);
     Route::post('/form4',[formesController::class,'form4Submit'])->name('form4');
+
+
+    Route::get('/form5',[formesController::class,'form5']);
+    Route::post('/form5',[formesController::class,'form5Submit'])->name('form5');
 });
 

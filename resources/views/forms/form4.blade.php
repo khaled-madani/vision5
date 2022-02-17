@@ -13,15 +13,7 @@
     <div class="container my-5">
         <h1>Review Form + Upload File</h1>
         {{-- @dump($errors->all()) --}}
-        @if ($errors->any())
-            <div class="alert alert-warning">
-                <ul>
-                    @foreach ($errors->all() as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('forms.error')
         <form action="{{ route('form4') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

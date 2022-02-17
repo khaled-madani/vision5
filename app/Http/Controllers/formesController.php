@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUsMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class formesController extends Controller
 {
@@ -87,4 +89,32 @@ class formesController extends Controller
         $request->file('cv')->move(public_path('Uploads'),$imgName);
         return view('forms.form4Image',compact('imgName'));
     }
+
+    public function form5()
+    {
+        return view('forms.form5');
+    }
+
+
+    public function form5Submit(Request $request)
+    {
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required'],
+            'message' => ['required'],
+            'cv' => ['required','file','mimes:pdf','max:5200']
+        ]);
+
+        $newName =  str_replace(' ' , '_',strtolower($request->name));
+        $ex = $request->file('cv')->getClientOriginalExtension();
+        // 'cv_khaled_madnai_852252222.pdf'
+        $name = 'cv'.'_'.$newName.'_'.time().'.'.$ex;
+        $request->file('cv')->move(public_path('uploade/cv'),$name);
+        $data = $request->except('_token','cv','hoppies');
+        $data['cv'] = $name ;
+        $data['hoppies'] = implode(', ',$request->hoppies);
+        Mail::to('admin@info.com')->send(new ContactUsMail($data));
+        // return view('forms.form5');
+    }
+
 }

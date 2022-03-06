@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    function insurance(){
+        // return $this->hasOne(Insurance::class,'uu_id'); اذا كان المفتاح الاجنبي ليس عى المعيار الاساسي نضيفه هكذا
+        return $this->hasOne(Insurance::class);
+    }
 }

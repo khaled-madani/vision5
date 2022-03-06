@@ -1,10 +1,16 @@
 <?php
 
-use App\Http\Controllers\formesController;
-use App\Http\Controllers\Site2Controller;
-use App\Http\Controllers\siteOneController;
+// use App\Http\Controllers\CourseController;
+use App\Models\News;
+use App\Models\Course;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
+use App\Http\Controllers\Site2Controller;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\formesController;
+use App\Http\Controllers\RelationController;
+use App\Http\Controllers\siteOneController;
 
 Route::get('/',function(){
     return view('welcome');
@@ -121,3 +127,65 @@ Route::prefix('/form')->group(function (){
     Route::post('/form5',[formesController::class,'form5Submit'])->name('form5');
 });
 
+
+// Route::get('insert',function(){
+//     //Query statemene
+//     // DB::statement('insert into comment (title) values ("new ttttitle")');
+//     // DB::statement('insert into comment (title,created_at,updated_at) values (?,?,?)',['newwqw ttttitle',now(),now()]);
+//     // Query Builder
+//     // DB::table('new')->insert([
+//     //     'title' =>'New',
+//     //     'body' => 'Newwwe',
+//     //     'image' =>'Newqwewqe.png',
+//     //     'rate' => '3',
+//     //     'created_at' => now(),
+//     //     'updated_at' => now(),
+
+//     // ]);
+//     // elQounet Model Laravel
+//     News::create([
+//         'title' =>'New2',
+//         'body' => 'Newwwe2',
+//         'image' =>'Newqwewqe2.png',
+//         'rate_new' => '2'
+//     ]);
+// });
+
+
+// Route::get('new-course',function (){
+//     Course::create([
+//     'name' => 'New content',
+//     'price' => '150',
+//     'image' => 'content.png',
+//     'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit nostrum nemo maiores a nihil libero, dolorum quod tenetur quibusdam minus vel dolores provident odit! Tempore saepe at doloremque facere laborum!'
+//     ]);
+//     return 'done';
+// });
+
+
+// Route::prefix('course')->name('courses.')->group(function(){
+//     //Show all database
+//     Route::get('/',[CourseController::class,'index'])->name('index');
+// +
+//     Route::get('create',[CourseController::class,'create'])->name('create');
+//     Route::post('create',[CourseController::class,'store'])->name('store');
+
+//     Route::get('/{id}/edit',[CourseController::class,'edit'])->name('edit');
+//     Route::put('/{id}/edit',[CourseController::class,'update'])->name('update');
+
+//     Route::delete('/{id}/delete',[CourseController::class,'destroy'])->name('destroy');
+// });
+
+Route::resource('courses', CourseController::class);
+
+
+Route::get('hash',function(){
+    // return md5(123);
+    // return sha1(123);
+    return bcrypt(123);
+});
+
+
+Route::controller(RelationController::class)->group(function(){
+    Route::get('one-to-one','one_to_one')->name('on_to_one');
+});

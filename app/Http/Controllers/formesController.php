@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactUsMail;
+use App\Mail\form4Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -80,13 +81,18 @@ class formesController extends Controller
         $request->validate([
             'name' => ['required','min:3','max:20'],
             'phone' => ['required'],
-            'cv'=> ['required','file','mimes:pdf' ,'max:1024']
+            // 'cv'=> ['required','file','mimes:pdf' ,'max:10240']و
+            'cv'=> ['required','file','mimes:jpg,png']
         ]);
         // dd($request->all());
         // $imgName = time() . $request->file('cv')->getClientOriginalName();
         // $imgName = 'websiteName'.time().'_'.rand(00000000,99999999).$request->file('cv')->getClientOriginalName();
         $imgName = 'websiteName'.time().'_'.rand(00000000,99999999).'.'.$request->file('cv')->getClientOriginalExtension();
         $request->file('cv')->move(public_path('Uploads'),$imgName);
+        $data2 = $request->except('_token','cv');
+        $data2['cv'] = $imgName;
+        // dd($data2);
+        Mail::to('khaled123@gmail')->send(new form4Mail($data2));
         return view('forms.form4Image',compact('imgName'));
     }
 

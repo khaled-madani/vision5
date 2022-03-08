@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+
     ];
 
     /**
@@ -47,5 +48,11 @@ class User extends Authenticatable
     function insurance(){
         // return $this->hasOne(Insurance::class,'uu_id'); اذا كان المفتاح الاجنبي ليس عى المعيار الاساسي نضيفه هكذا
         return $this->hasOne(Insurance::class);
+    }
+
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 }
